@@ -1,1 +1,1 @@
-# csforeach-sofia
+# [CSForeach] Project Inspo
