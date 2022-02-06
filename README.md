@@ -2,8 +2,10 @@
 
 Getting Started:
 
-`cd project-inspo`
+```
+cd project-inspo
 
-`npm install`
+npm install
 
-`npm run serve`
+npm run serve
+```
