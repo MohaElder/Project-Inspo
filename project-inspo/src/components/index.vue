@@ -11,7 +11,7 @@ export default {
   name: "index",
   data() {
     return {
-      msg: "hi",
+      msg: "hello",
     };
   },
   methods: {
