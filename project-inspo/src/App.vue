@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <index />
+  <!-- <index />  -->
+  <work />
 </template>
 
 <script>
-import index from './components/index.vue'
+//import index from './components/index.vue'
+import work from './components/work.vue'
 
 export default {
   name: 'App',
   components: {
-    index
+    //index,
+    work
   }
 }
 </script>

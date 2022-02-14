@@ -1,14 +1,19 @@
 <template>
   <div class="container">
-    <h1>{{ msg }}</h1>
-    <input type="text" v-model="msg" />
-    <button @click="change">You can also click me to change content</button>
+    <div class="half wrapped container">
+        <div class="less-blue semi-title">work</div>
+        <div class="blue title">00:10</div>
+
+    </div>
+    <div class="half">
+        <div class="blue semi-title">to-do</div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "index",  
+  name: "index",
   data() {
     return {
       msg: "hi",
@@ -24,9 +29,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.container {
-  display: grid;
-  grid-gap: 30px;
-  height: 500px;
-}
+
+@import url("../global.css");
+
 </style>
