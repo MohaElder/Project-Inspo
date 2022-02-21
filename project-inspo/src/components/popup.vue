@@ -1,30 +1,36 @@
 <template>
-    <div id="popup" class="centered" @keyup.stop.prevent="keyEvent($event)">
-        <img id="pop-up-cat" src="../assets/pop_up_cat.png">
-        <div class="settings">
-            <div class="setting">
-                <span class="semi-title set-type">work</span>
-                <span class="timer">
-                    <span class="input" @click="change_selected_input">00</span>
-                    <span>:</span>
-                    <span class="input" @click="change_selected_input">00</span>
-                </span>
+    <Transition>
+        <div id="popup" class="centered" v-if="show" @keyup.stop.prevent="keyEvent($event)">
+            <img id="pop-up-cat" src="../assets/pop_up_cat.png">
+            <div class="settings">
+                <div class="setting">
+                    <span class="semi-title set-type">work</span>
+                    <span class="timer">
+                        <span class="input" @click="change_selected_input">00</span>
+                        <span>:</span>
+                        <span class="input" @click="change_selected_input">00</span>
+                    </span>
+                </div>
+                <div class="setting">
+                    <span class="semi-title set-type">break</span>
+                    <span class="timer">
+                        <span class="input" @click="change_selected_input">00</span>
+                        <span>:</span>
+                        <span class="input" @click="change_selected_input">00</span>
+                    </span>
+                </div>
+                <div class="start btn" @click="show = false">start</div>
             </div>
-            <div class="setting">
-                <span class="semi-title set-type">break</span>
-                <span class="timer">
-                    <span class="input" @click="change_selected_input">00</span>
-                    <span>:</span>
-                    <span class="input" @click="change_selected_input">00</span>
-                </span>
-            </div>
-            <div class="start btn">start</div>
+            <div id="popup-cancel" class="top-right-btn btn">cancel</div>
         </div>
-        <div id="popup-cancel" class="top-right-btn btn">cancel</div>
-    </div>
+    </Transition>
 </template>
 
 <script>
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export default {
     name: 'popup',
@@ -55,8 +61,15 @@ export default {
             }
         }
     },
-    mounted() {
+    async mounted() {
         window.addEventListener("keydown", this.keypress)
+        await sleep(500)
+        this.show = true;
+    },
+    data() {
+        return {
+            show: false
+        }
     }
 }
 
@@ -74,6 +87,7 @@ export default {
     background-color: #3D5A76;
     font-family: "Sofia Pro Bold";
     color: #fff;
+    z-index: 1;
 }
 .centered {
     position: fixed;
@@ -124,5 +138,14 @@ export default {
 }
 #popup-cancel {
     font-size: 30px;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
