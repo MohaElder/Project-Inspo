@@ -1,17 +1,20 @@
 <template>
   <!-- <index />  -->
-  <work />
+  <!-- <work /> -->
+  <popup />
 </template>
 
 <script>
 //import index from './components/index.vue'
-import work from './components/work.vue'
+// import work from './components/work.vue'
+import popup from './components/popup.vue'
 
 export default {
   name: 'App',
   components: {
     //index,
-    work
+    // work,
+    popup
   }
 }
 </script>
