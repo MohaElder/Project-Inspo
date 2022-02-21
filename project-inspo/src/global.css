@@ -125,6 +125,10 @@
     src: local('./assets/fonts/Sofia Pro Black Italic'), url('./assets/fonts/Sofia Pro Black Italic Az.woff') format('woff');
     }
 
+    :root{
+        --orange: #FF8D5D;
+    }
+
     .container{
         display: flex;
         width: 100%;
@@ -156,3 +160,5 @@
     .orange {
         color: #FF8D5D;
     }
+
+    

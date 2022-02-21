@@ -6,14 +6,21 @@
 
     </div>
     <div class="half">
-        <div class="blue semi-title">to-do</div>
+        <div class="blue semi-title">sticky notes</div>
+        <note />
     </div>
   </div>
 </template>
 
 <script>
+
+import note from './note.vue'
+
 export default {
   name: "index",
+   components: {
+      note
+  },
   data() {
     return {
       msg: "hi",
