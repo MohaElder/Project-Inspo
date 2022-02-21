@@ -1,33 +1,63 @@
 <template>
-    <div id="popup" class="centered">
+    <div id="popup" class="centered" @keyup.stop.prevent="keyEvent($event)">
         <image id="pop-up-cat" src="../assets/pop_up_cat.png"></image>
         <div class="settings">
             <div class="setting">
                 <span class="semi-title set-type">work</span>
                 <span class="timer">
-                    <span class="input">00</span>
+                    <span class="input" @click="change_selected_input">00</span>
                     <span>:</span>
-                    <span class="input">00</span>
+                    <span class="input" @click="change_selected_input">00</span>
                 </span>
             </div>
             <div class="setting">
                 <span class="semi-title set-type">break</span>
                 <span class="timer">
-                    <span class="input">00</span>
+                    <span class="input" @click="change_selected_input">00</span>
                     <span>:</span>
-                    <span class="input">00</span>
+                    <span class="input" @click="change_selected_input">00</span>
                 </span>
             </div>
-            <div class="start">start</div>
+            <div class="start btn">start</div>
         </div>
-        <div id="popup-cancel" class="top-right-btn">cancel</div>
+        <div id="popup-cancel" class="top-right-btn btn">cancel</div>
     </div>
 </template>
 
 <script>
 
 export default {
-    name: 'popup'
+    name: 'popup',
+    selected_input: undefined,
+    methods: {
+        change_selected_input(event) {
+            this.selected_input = event.target
+        },
+        keypress(event) {
+
+            // validation
+            if (this.selected_input == null)
+                return
+
+            let original_content = this.selected_input.textContent
+            if (0 <= event.key || event.key < 9) {
+                let new_content = original_content.charAt(1) + event.key;
+
+                if (new_content < 60)
+                    this.selected_input.textContent = new_content
+                else
+                    this.selected_input.textContent = "00"
+
+            }
+
+            if (event.key == "Backspace") {
+                this.selected_input.textContent = "0" + original_content.charAt(0)
+            }
+        }
+    },
+    mounted() {
+        window.addEventListener("keydown", this.keypress)
+    }
 }
 
 </script>
@@ -70,6 +100,12 @@ export default {
 }
 .set-type {
     padding-top: 20px;
+}
+.input {
+    min-width: 90px;
+}
+.input:hover, .btn:hover {
+    cursor: pointer;
 }
 .start {
     width: 180px;
