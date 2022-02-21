@@ -1,6 +1,6 @@
 <template>
     <div id="popup" class="centered" @keyup.stop.prevent="keyEvent($event)">
-        <image id="pop-up-cat" src="../assets/pop_up_cat.png"></image>
+        <img id="pop-up-cat" src="../assets/pop_up_cat.png">
         <div class="settings">
             <div class="setting">
                 <span class="semi-title set-type">work</span>
@@ -28,7 +28,7 @@
 
 export default {
     name: 'popup',
-    selected_input: undefined,
+    selected_input: null,
     methods: {
         change_selected_input(event) {
             this.selected_input = event.target
