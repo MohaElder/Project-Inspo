@@ -57,6 +57,7 @@ export default {
   height: 404px;
   width: 404px;
   border: 4px solid var(--orange);
+  background-color: white;
   border-radius: 21px;
   padding: 5%;
   flex-direction: column;
