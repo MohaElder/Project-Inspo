@@ -1,7 +1,7 @@
 <template>
   <!-- <index />  -->
   <!-- <work /> -->
-  <account type="log_in"></account>
+  <account type="sign_up"></account>
 </template>
 
 <script>

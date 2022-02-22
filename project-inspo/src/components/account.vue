@@ -10,10 +10,11 @@
             <div class="sub-section">
                 <div class="form">
                     <div id="form-title" class="blue">{{ form_title }}</div>
-                    <!-- <div>email</div>
-                    <input type="email" placeholder="example@gmail.com">
-                    <div>password</div>
-                    <input type="password"> -->
+                    <label>email</label><br>
+                    <input type="email" placeholder="example@gmail.com"><br>
+                    <label>password</label><br>
+                    <input type="password"><br>
+                    <input type="submit" :value="type.replace('_', ' ')" id="submit-btn">
                 </div>
                 <div class="prompt">
                     <span class="question">{{ question }}</span>
@@ -50,6 +51,7 @@ export default {
 
 #account {
     font-family: "Sofia Pro Bold";
+    font-size: 18px;
 }
 
 .top-left-route {
@@ -86,12 +88,51 @@ img {
     width: 100%;
     border-radius: 21px;
     box-shadow: 0 10px 60px rgba(0, 0, 0, 0.2);
+    text-align: left;
 }
 
 #form-title {
-    padding: 45px 50px;
-    text-align: left;
+    margin: 45px 0 15px 50px;
     font-size: 45px;
+}
+
+label {
+    display: inline-block;
+    margin: 20px 0 5px 50px;
+}
+
+input {
+    display: block;
+    height: 40px;
+    width: calc(100% - 70px - 50px);
+    margin: 10px 0 0 50px;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 15px;
+    background-color: #A9BEDD;
+    font-family: "Sofia Pro Bold";
+    font-size: 14px;
+}
+
+#submit-btn {
+    display: block;
+    width: 180px;
+    height: 50px;
+    margin: 40px auto;
+    padding: 15px 40px;
+    border-radius: 30px;
+    background-color: #FF8D5D;
+    font-size: 22px;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#submit-btn:hover {
+    width: 230px;
+    cursor: pointer;
+    background-color: #f36817;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
 }
 
 .prompt {
