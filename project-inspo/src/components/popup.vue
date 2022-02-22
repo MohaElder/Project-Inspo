@@ -39,7 +39,7 @@ export default {
         change_selected_input(event) {
             this.selected_input = event.target
         },
-        keypress(event) {
+        async keypress(event) {
 
             // validation
             if (this.selected_input == null)
@@ -49,15 +49,24 @@ export default {
             if (0 <= event.key || event.key < 9) {
                 let new_content = original_content.charAt(1) + event.key;
 
-                if (new_content < 60)
+                if (new_content < 60) {
                     this.selected_input.textContent = new_content
-                else
+                    this.selected_input.classList.add("clear")
+                }
+                else {
+                    this.selected_input.textContent = new_content
+                    await sleep(100)
                     this.selected_input.textContent = "00"
+                    this.selected_input.classList.remove("clear")
+                }
 
             }
 
             if (event.key == "Backspace") {
                 this.selected_input.textContent = "0" + original_content.charAt(0)
+
+                if (this.selected_input.textContent == "00")
+                    this.selected_input.classList.remove("clear")
             }
         }
     },
@@ -117,17 +126,33 @@ export default {
 }
 .input {
     min-width: 90px;
+    opacity: 0.5;
 }
 .input:hover, .btn:hover {
     cursor: pointer;
+    opacity: 1;
+}
+.clear {
+    opacity: 1;
 }
 .start {
+    display: block;
     width: 180px;
-    padding: 15px;
-    margin: 35px auto 0 auto;
-    border-radius: 135px;
+    height: 50px;
+    margin: 40px auto;
+    padding: 15px 40px;
+    border-radius: 30px;
     background-color: #FF8D5D;
-    font-size: 25px;
+    font-size: 22px;
+    color: #fff;
+    transition: all 0.3s;
+}
+.start:hover {
+    width: 230px;
+    cursor: pointer;
+    background-color: #f36817;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
 }
 .top-right-btn {
     position: absolute;
