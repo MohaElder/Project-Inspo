@@ -37,7 +37,11 @@ export default {
     selected_input: null,
     methods: {
         change_selected_input(event) {
+            if (this.selected_input != null) {
+                this.selected_input.classList.toggle("clear")
+            }
             this.selected_input = event.target
+            this.selected_input.classList.toggle("clear")
         },
         async keypress(event) {
 
@@ -64,9 +68,6 @@ export default {
 
             if (event.key == "Backspace") {
                 this.selected_input.textContent = "0" + original_content.charAt(0)
-
-                if (this.selected_input.textContent == "00")
-                    this.selected_input.classList.remove("clear")
             }
         }
     },
