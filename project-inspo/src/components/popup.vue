@@ -61,7 +61,6 @@ export default {
                     this.selected_input.textContent = new_content
                     await sleep(100)
                     this.selected_input.textContent = "00"
-                    this.selected_input.classList.remove("clear")
                 }
 
             }
