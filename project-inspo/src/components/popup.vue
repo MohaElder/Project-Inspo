@@ -21,7 +21,7 @@
                 </div>
                 <div class="start btn" @click="show = false">start</div>
             </div>
-            <div id="popup-cancel" class="top-right-btn btn">cancel</div>
+            <div id="popup-cancel" class="top-right-btn btn" @click="show = false">cancel</div>
         </div>
     </Transition>
 </template>
