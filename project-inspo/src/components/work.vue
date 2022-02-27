@@ -1,10 +1,5 @@
 <template>
-  <div class="container">
-    <div class="half wrapped container">
-        <div class="less-blue semi-title">work</div>
-        <div class="blue title">00:10</div>
-
-    </div>
+  <div class="container">    
     <div class="half">
         <div class="blue semi-title">to-do</div>
     </div>
