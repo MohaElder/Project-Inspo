@@ -1,5 +1,6 @@
 <template>
   <div class="container">    
+    <timer time=50 key=""/>
     <div class="half">
         <div class="blue semi-title">to-do</div>
     </div>
@@ -7,8 +8,13 @@
 </template>
 
 <script>
+import timer from './timer.vue'
+
 export default {
   name: "index",
+  components:{
+        timer,
+  },
   data() {
     return {
       msg: "hi",
