@@ -6,10 +6,11 @@
         <img id="studying" class="bg" src="../assets/studying.png" />
         <img
           class="play-btn"
-          :src="isPlaying ? pause : play"
+          :src="isPlaying ? pause : play" 
           key="pause"
           @click="toggleTimer"
         />
+        <!--the isPlaying ? pause : play means: if isPlaying is True? Then use pause src, else show play src -->
       </div>
     </div>
 </template>
@@ -21,7 +22,7 @@ import pause from "../assets/pause.png";
 export default {
   name: "timer",
   props: {
-    time: Number,
+    time: Number, //we use props when we want to pass in parameters from the parent component, check out work.vue and you will know what I am talking about.
   },
   data() {
     return {
@@ -55,7 +56,7 @@ export default {
       }
       return time.toString();
     },
-    toggleTimer() {
+    toggleTimer() { //I merged toggle, pause, and start to one function! It's just some simple changes based on your code~
       clearInterval(this.timerInstance);
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
