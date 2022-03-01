@@ -23,7 +23,7 @@ export default {
       msg: "hi",
       notes: [
         {
-          name: "biology",
+          name: "english",
           notes: [
             "the mitochondria is the powerhouse of the cell",
             "hank green whooo",
@@ -31,6 +31,14 @@ export default {
           ],
         },
         {
+          name: "math",
+          notes: [
+            "1 + 1 = 2",
+            "2 + 2 = 4",
+            "math is fun!",
+          ],
+        },  
+                {
           name: "math",
           notes: [
             "1 + 1 = 2",
