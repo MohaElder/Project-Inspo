@@ -7,8 +7,24 @@
         </div>
         <img id="studying" class = "bg" src="../assets/studying.png">
         <div class="controls">
-            <button type="button" class="button" @click = "startTimer"><img id="play" class = "icon" src="../assets/play.png"></button>
-            <button type="button" class="button" @click = "pauseTimer"><img id="pause" class = "icon" src="../assets/pause.png"></button>
+
+            <button
+                class="button"
+                @click="toggle"
+                >
+                <transition-group name="toggle-buttons">
+                    <img :src="pause"
+                    v-if="isPlaying"
+                    key="pause"
+                    @click= "pauseTimer"
+                    />
+                    <img :src="play"
+                    v-else
+                    key="play"
+                    @click= "startTimer"
+                    />
+                </transition-group>
+            </button>
         </div>
     </div>
     
@@ -16,13 +32,20 @@
 </template>
 
 <script>
+
+import play from "../assets/play.png"
+import pause from "../assets/pause.png"
+
 export default {
   name: "timer",
   data() {
     return {
         timerInstance: null,
-        totalSeconds:60
-    }
+        totalSeconds:20,
+        isPlaying: false,
+        play:play,
+        pause:pause,
+    };
   },
 
   computed: {
@@ -60,7 +83,13 @@ export default {
       },
       changeCurrentTimer(num){
           this.currentTimer=num
-      }
+      },
+       finishTimer(){
+      },
+      toggle() {
+        this.isPlaying = !this.isPlaying
+        this.$emit('toggleIsPlaying', this.isPlaying)
+        },
   },
 };
 </script>
@@ -69,10 +98,15 @@ export default {
 <style scoped>
 
 @import url("../global.css");
+.half{
+  margin-left:3%;
+  border-style: dotted;
+}
 .timer {
   display: flex;
   flex-direction:column;
   align-items: flex-start;
+
 }
 .icon {
   width:84px;
@@ -81,7 +115,7 @@ export default {
   align-self: center;
 }
 .bg {
-  width:720px;
+  width:550px;
   height: auto;
 }
 .controls{
@@ -90,6 +124,6 @@ export default {
 }
 .button{
     border:none;
-    background-color: #FFFFFF;
+    background-color: transparent;
 }
 </style>
