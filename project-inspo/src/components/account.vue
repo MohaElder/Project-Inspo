@@ -69,7 +69,9 @@ img {
 .main-section {
     height: calc(100vh - 5vh - 8px * 2); /* 8px cause body somehow has the margin of 8px */
     width: calc(100vw - 12vw - 10vw - 8px * 2);
+    max-width: 1500px;
     padding: 5vh 12vw 0 10vw;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
 }
