@@ -1,13 +1,24 @@
-# You should not be working on this branch!!! Go to your own branch!
+# project-inspo
 
-# [CSForeach] Project Inspo
-
-Getting Started:
-
+## Project setup
 ```
-cd project-inspo
-
 npm install
+```
 
+### Compiles and hot-reloads for development
+```
 npm run serve
 ```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
