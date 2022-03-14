@@ -1,9 +1,9 @@
 <template>
   <div class="timer">
-      <div class="less-blue semi-title">work</div>
+      <div class="less-blue semi-title">{{section}}</div>
       <div class="blue title">{{ displayMinutes }}:{{ displaySeconds }}</div>
       <div class="controls">
-        <img id="studying" class="bg" src="../assets/studying.png" />
+        <img class="bg" :src="image"/>
         <img
           class="play-btn"
           :src="isPlaying ? pause : play" 
@@ -16,8 +16,11 @@
 </template>
 
 <script>
+import rest from "../assets/rest.png";
 import play from "../assets/play.png";
 import pause from "../assets/pause.png";
+import studying from "../assets/studying.png";
+
 
 export default {
   name: "timer",
@@ -31,6 +34,9 @@ export default {
       isPlaying: false,
       play: play,
       pause: pause,
+      image:studying,
+      rest: rest,
+      section: "work"
     };
   },
 
@@ -50,6 +56,16 @@ export default {
   },
 
   methods: {
+    changeSection(){
+      if(this.section==="work"){
+        this.section="break"
+        this.image=rest
+
+      }else if(this.section==="break"){
+        this.section="work"
+        this.image=studying
+      }
+    },
     formatTime(time) {
       if (time < 10) {
         return "0" + time;
@@ -63,6 +79,7 @@ export default {
         this.timerInstance = setInterval(() => {
           if (this.totalSeconds <= 0) {
             console.log("work completed");
+            this.changeSection();
             clearInterval(this.timerInstance);
             return;
           }
@@ -91,8 +108,8 @@ export default {
 
 .play-btn:hover {
   animation: bounce; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; /* don't forget to set a duration! */
-}
+  animation-duration: 2s; /*don't forget to set a duration! */
+}  
 
 .timer {
   display: flex;
