@@ -1,6 +1,7 @@
 <template>
   <div class="container">    
-    <timer time=3 key=""/>
+    <timer worktime=5 breaktime=3 key=""/>
+    ddddddd
     <div class="half">
         <div class="blue semi-title">to-do</div>
     </div>
