@@ -12,6 +12,8 @@
 
 import timer from './timer.vue'
 import note from './note.vue'
+import popup from './components/popup.vue'
+
 export default {
   name: "index",
   components:{
