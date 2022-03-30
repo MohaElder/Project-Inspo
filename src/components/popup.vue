@@ -6,9 +6,9 @@
                 <div class="setting">
                     <span class="semi-title set-type">work</span>
                     <span class="timer">
-                        <span class="input" @click="change_selected_input">00</span>
+                        <span class="input" @click="change_selected_input">{{hour}}</span>
                         <span>:</span>
-                        <span class="input" @click="change_selected_input">00</span>
+                        <span class="input" @click="change_selected_input">{{minute}}</span>
                     </span>
                 </div>
                 <div class="setting">
@@ -77,7 +77,9 @@ export default {
     },
     data() {
         return {
-            show: false
+            show: false,
+            hour: "00",
+            minute: "00",
         }
     }
 }

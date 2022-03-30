@@ -1,5 +1,6 @@
 <template>
-  <div class="container">    
+  <div class="container">
+    <popup />
     <timer worktime=.5 breaktime=.2 key=""/>
     <div class="half">
         <div class="blue semi-title">sticky notes</div>
@@ -12,13 +13,14 @@
 
 import timer from './timer.vue'
 import note from './note.vue'
-import popup from './components/popup.vue'
+import popup from './popup.vue'
 
 export default {
   name: "index",
   components:{
         timer,
-        note
+        note,
+        popup,
 
   },
   data() {
