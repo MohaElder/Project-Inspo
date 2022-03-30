@@ -2,18 +2,22 @@
   <div class="container">    
     <timer worktime=.5 breaktime=.2 key=""/>
     <div class="half">
-        <div class="blue semi-title">to-do</div>
+        <div class="blue semi-title">sticky notes</div>
+        <note />
     </div>
   </div>
 </template>
 
 <script>
-import timer from './timer.vue'
 
+import timer from './timer.vue'
+import note from './note.vue'
 export default {
   name: "index",
   components:{
         timer,
+        note
+
   },
   data() {
     return {
