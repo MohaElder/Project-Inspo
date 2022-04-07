@@ -1,32 +1,48 @@
 <template>
   <div class="container">
-    <h1>{{ msg }}</h1>
-    <input type="text" v-model="msg" />
-    <button @click="change">You can also click me to change content</button>
+    <span v-if="user != null">
+      <popup :user="user" />
+      <timer
+        :worktime="user.getWorkTime()"
+        :breaktime="user.getBreakTime()"
+        key=""
+      />
+      <div class="half">
+        <div class="blue semi-title">sticky notes</div>
+        <note />
+      </div>
+    </span>
+    <span v-else> aaaa </span>
   </div>
 </template>
 
 <script>
+import timer from "./timer.vue";
+import note from "./note.vue";
+import popup from "./popup.vue";
+import { User } from "../middleware/data.js";
+
 export default {
   name: "index",
+  components: {
+    timer,
+    note,
+    popup,
+  },
   data() {
     return {
-      msg: "hello",
+      user: null,
     };
   },
-  methods: {
-    change() {
-      this.msg = "See? Now it's changed";
-    },
+  mounted() {
+    console.log("mounted");
+    this.user = new User();
   },
+  methods: {},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.container {
-  display: grid;
-  grid-gap: 30px;
-  height: 500px;
-}
+@import url("../global.css");
 </style>
