@@ -3,9 +3,13 @@
 Getting Started:
 
 ```
-cd project-inspo
+Install Python(3.6 or above)
 
-npm install
+cd web
 
-npm run serve
+pip install -r requirements.txt
+
+python wsgi.py
+
+Go to your browser and access localhost:5000
 ```

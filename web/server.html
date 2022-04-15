@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module server</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>server</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ccalen%5Cdocuments%5Cgithub%5Cproject-megabunus%5Cweb%5Cserver.py">c:\users\calen\documents\github\project-megabunus\web\server.py</a></font></td></tr></table>
+    <p><tt>server.py<br>
+&nbsp;<br>
+This&nbsp;file&nbsp;provides&nbsp;backend&nbsp;server&nbsp;functionality&nbsp;<br>
+for&nbsp;Self-Reliance&nbsp;Portal.&nbsp;It&nbsp;mainly&nbsp;handles&nbsp;user&nbsp;<br>
+login,&nbsp;regstration,&nbsp;and&nbsp;other&nbsp;operations&nbsp;involving&nbsp;<br>
+the&nbsp;database.&nbsp;It&nbsp;also&nbsp;handles&nbsp;some&nbsp;OSS&nbsp;related&nbsp;stuff.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top><a href="sqlite3.html">sqlite3</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="server.html#Cursor">Cursor</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Cursor">class <strong>Cursor</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Cursor">Cursor</a>(db_name,&nbsp;db_names)<br>
+&nbsp;<br>
+<a href="#Cursor">Cursor</a><br>
+&nbsp;<br>
+Purpose:&nbsp;<a href="#Cursor">Cursor</a>&nbsp;class&nbsp;wraps&nbsp;the&nbsp;sqlite&nbsp;library<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;client&nbsp;to&nbsp;perform&nbsp;database&nbsp;operations&nbsp;more&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;easily.<br>
+&nbsp;<br>
+Fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;db_name:&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;cursor&nbsp;to&nbsp;operate&nbsp;at&nbsp;first<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;db_names:&nbsp;the&nbsp;range&nbsp;of&nbsp;database&nbsp;names&nbsp;the&nbsp;cursor&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;can&nbsp;choose&nbsp;to&nbsp;connect&nbsp;from<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Cursor-__init__"><strong>__init__</strong></a>(self, db_name, db_names)</dt><dd><tt>Initializes&nbsp;the&nbsp;cursor.<br>
+&nbsp;<br>
+Initializes&nbsp;the&nbsp;cursor&nbsp;by&nbsp;initializing&nbsp;db_names&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;calling&nbsp;connect&nbsp;with&nbsp;db_name.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;db_name:&nbsp;the&nbsp;database's&nbsp;name&nbsp;to&nbsp;connect.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;db_names:&nbsp;the&nbsp;range&nbsp;of&nbsp;database&nbsp;names&nbsp;to&nbsp;choose&nbsp;from.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Cursor-connect"><strong>connect</strong></a>(self, db_name)</dt><dd><tt>connects&nbsp;the&nbsp;cursor&nbsp;to&nbsp;another&nbsp;database<br>
+&nbsp;<br>
+connects&nbsp;the&nbsp;cursor&nbsp;to&nbsp;another&nbsp;database&nbsp;by&nbsp;reinitializing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;sqlite&nbsp;connection&nbsp;and&nbsp;cursor<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;db_name:&nbsp;the&nbsp;database's&nbsp;name&nbsp;to&nbsp;initialize<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;db&nbsp;name&nbsp;not&nbsp;found!</tt></dd></dl>
+
+<dl><dt><a name="Cursor-delete"><strong>delete</strong></a>(self, condition)</dt><dd><tt>deletes&nbsp;the&nbsp;record&nbsp;according&nbsp;to&nbsp;the&nbsp;condition<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;condition:&nbsp;the&nbsp;condition&nbsp;to&nbsp;execute,<br>
+&nbsp;<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;database&nbsp;execution&nbsp;errors,&nbsp;probably&nbsp;related&nbsp;with&nbsp;command.</tt></dd></dl>
+
+<dl><dt><a name="Cursor-get"><strong>get</strong></a>(self, condition)</dt><dd><tt>get&nbsp;one&nbsp;record&nbsp;from&nbsp;the&nbsp;database&nbsp;according<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;condition<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;condition:&nbsp;the&nbsp;condition&nbsp;to&nbsp;execute<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;found&nbsp;record<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;database&nbsp;execution&nbsp;errors,&nbsp;probably&nbsp;related&nbsp;with&nbsp;command.</tt></dd></dl>
+
+<dl><dt><a name="Cursor-getAll"><strong>getAll</strong></a>(self, condition='')</dt><dd><tt>gets&nbsp;all&nbsp;records&nbsp;in&nbsp;the&nbsp;database<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;condition(optional):&nbsp;the&nbsp;condition&nbsp;to&nbsp;execute,<br>
+&nbsp;<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;database&nbsp;execution&nbsp;errors,&nbsp;probably&nbsp;related&nbsp;with&nbsp;command.</tt></dd></dl>
+
+<dl><dt><a name="Cursor-insert"><strong>insert</strong></a>(self, prop, values)</dt><dd><tt>inserts&nbsp;into&nbsp;the&nbsp;record&nbsp;with&nbsp;with&nbsp;desired&nbsp;column&nbsp;and&nbsp;value<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;prop:&nbsp;the&nbsp;columns&nbsp;to&nbsp;<a href="#Cursor-insert">insert</a>(e.g:&nbsp;name,&nbsp;sex,&nbsp;age)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;the&nbsp;values&nbsp;to&nbsp;<a href="#Cursor-insert">insert</a>(e.g:&nbsp;calen,&nbsp;male,&nbsp;19)<br>
+&nbsp;<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;success<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;prop&nbsp;not&nbsp;found&nbsp;or&nbsp;value&nbsp;invalid</tt></dd></dl>
+
+<dl><dt><a name="Cursor-run"><strong>run</strong></a>(self, command)</dt><dd><tt>runs&nbsp;a&nbsp;command&nbsp;in&nbsp;the&nbsp;database<br>
+&nbsp;<br>
+runs&nbsp;a&nbsp;command&nbsp;in&nbsp;the&nbsp;database&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;commits&nbsp;it<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;command:&nbsp;the&nbsp;command&nbsp;to&nbsp;execute<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;database&nbsp;execution&nbsp;errors,&nbsp;probably&nbsp;related&nbsp;with&nbsp;command.</tt></dd></dl>
+
+<dl><dt><a name="Cursor-update"><strong>update</strong></a>(self, condition, values)</dt><dd><tt>updates&nbsp;the&nbsp;record&nbsp;with&nbsp;with&nbsp;desired&nbsp;condition&nbsp;and&nbsp;values<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;condition:&nbsp;the&nbsp;condition&nbsp;to&nbsp;execute<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;values:&nbsp;the&nbsp;values&nbsp;to&nbsp;<a href="#Cursor-insert">insert</a>(e.g:&nbsp;calen,&nbsp;male,&nbsp;19)<br>
+&nbsp;<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;success<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;value&nbsp;invalid&nbsp;or&nbsp;condition&nbsp;error&nbsp;or&nbsp;condition&nbsp;not&nbsp;found</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>connection</strong> = None</dl>
+
+<dl><dt><strong>cursor</strong> = None</dl>
+
+<dl><dt><strong>db_name</strong> = None</dl>
+
+<dl><dt><strong>db_names</strong> = {}</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-GenerateID"><strong>GenerateID</strong></a>()</dt><dd><tt>generates&nbsp;a&nbsp;five&nbsp;digit&nbsp;random&nbsp;number</tt></dd></dl>
+ <dl><dt><a name="-composeLevel"><strong>composeLevel</strong></a>()</dt><dd><tt>creates&nbsp;or&nbsp;updates&nbsp;a&nbsp;level&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Call:&nbsp;/level<br>
+&nbsp;<br>
+Args:&nbsp;{"id":&nbsp;00000,&nbsp;"name":&nbsp;level_a,&nbsp;level:&nbsp;{...}}<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;success<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;parameter&nbsp;incorrect</tt></dd></dl>
+ <dl><dt><a name="-composeSetting"><strong>composeSetting</strong></a>()</dt><dd><tt>creates&nbsp;or&nbsp;updates&nbsp;a&nbsp;setting&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Call:&nbsp;/settings<br>
+&nbsp;<br>
+Args:&nbsp;{"id":&nbsp;00000,&nbsp;"name":&nbsp;setting_a,&nbsp;localization:&nbsp;{...}}<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;success<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;parameter&nbsp;incorrect</tt></dd></dl>
+ <dl><dt><a name="-deleteLevel"><strong>deleteLevel</strong></a>()</dt><dd><tt>deletes&nbsp;a&nbsp;level&nbsp;by&nbsp;id<br>
+&nbsp;<br>
+Call:&nbsp;/level?id=ID_OF_LEVEL<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;deleted<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;parameter&nbsp;incorrect</tt></dd></dl>
+ <dl><dt><a name="-deleteSetting"><strong>deleteSetting</strong></a>()</dt><dd><tt>deletes&nbsp;a&nbsp;setting&nbsp;by&nbsp;id<br>
+&nbsp;<br>
+Call:&nbsp;/setting?id=ID_OF_SETTING<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;deleted<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;parameter&nbsp;incorrect</tt></dd></dl>
+ <dl><dt><a name="-getLevel"><strong>getLevel</strong></a>()</dt><dd><tt>get&nbsp;level&nbsp;by&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Call:&nbsp;/level?id=ID_OF_LEVEL<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;level&nbsp;in&nbsp;json&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-getLevels"><strong>getLevels</strong></a>()</dt><dd><tt>get&nbsp;all&nbsp;levels'&nbsp;id&nbsp;and&nbsp;<br>
+level&nbsp;name&nbsp;localization<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;in&nbsp;json&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-getSettingByName"><strong>getSettingByName</strong></a>()</dt><dd><tt>get&nbsp;a&nbsp;setting&nbsp;by&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Call:&nbsp;/setting?name=NAME_OF_SETTING<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;success<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;parameter&nbsp;incorrect</tt></dd></dl>
+ <dl><dt><a name="-getSettings"><strong>getSettings</strong></a>()</dt><dd><tt>get&nbsp;all&nbsp;settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;settings&nbsp;in&nbsp;json&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-index"><strong>index</strong></a>()</dt><dd><tt>meme</tt></dd></dl>
+ <dl><dt><a name="-login"><strong>login</strong></a>()</dt><dd><tt>performs&nbsp;user&nbsp;login<br>
+&nbsp;<br>
+performs&nbsp;user&nbsp;login&nbsp;by&nbsp;checking&nbsp;if&nbsp;the&nbsp;user&nbsp;exists,<br>
+and&nbsp;returns&nbsp;true&nbsp;or&nbsp;false<br>
+&nbsp;<br>
+Call:&nbsp;/login<br>
+&nbsp;<br>
+Args:&nbsp;{"username":&nbsp;calen,&nbsp;"password":&nbsp;88888888}<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;True&nbsp;if&nbsp;user&nbsp;exists,&nbsp;False&nbsp;otherwise<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;username&nbsp;and&nbsp;password&nbsp;passed&nbsp;in&nbsp;in&nbsp;wrong&nbsp;format</tt></dd></dl>
+ <dl><dt><a name="-register"><strong>register</strong></a>()</dt><dd><tt>registers&nbsp;the&nbsp;user<br>
+&nbsp;<br>
+Call:&nbsp;/register<br>
+&nbsp;<br>
+Args:&nbsp;{"token"&nbsp;123456,&nbsp;"username":&nbsp;calen,&nbsp;"password":&nbsp;88888888}<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;string&gt;success&nbsp;or&nbsp;not<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Error:&nbsp;username&nbsp;and&nbsp;password&nbsp;passed&nbsp;in&nbsp;in&nbsp;wrong&nbsp;format</tt></dd></dl>
+ <dl><dt><a name="-userExist"><strong>userExist</strong></a>(username, password)</dt><dd><tt>check&nbsp;if&nbsp;the&nbsp;user&nbsp;exists<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;username:&nbsp;username<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;password:&nbsp;password<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whether&nbsp;the&nbsp;user&nbsp;exists&nbsp;or&nbsp;not</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DB_NAMES</strong> = {'LEVELS': 'levels.db', 'SETTINGS': 'settings.db', 'USERS': 'users.db'}<br>
+<strong>RegistrationCode</strong> = 'Eroducate!'<br>
+<strong>app</strong> = &lt;Flask 'server'&gt;<br>
+<strong>cursor</strong> = &lt;server.Cursor object&gt;<br>
+<strong>request</strong> = &lt;LocalProxy unbound&gt;</td></tr></table>
+</body></html>
