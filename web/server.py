@@ -323,7 +323,7 @@ def index():
     return "It Works! Yeah It's an Apache Meme"
 
 
-# TODO: Make this register follow our user database structure
+# TODO: Make this register follow our user database structure @Sophia
 @app.route('/register', methods=['POST'])
 def register():
     """registers the user
@@ -347,7 +347,7 @@ def register():
     VALUES (" + GenerateID() + ",'" + incoming["username"] + "','" + incoming["password"] + "')")
     return "User Created"
 
-# TODO: Make sure that this works after we updated register
+# TODO: Make sure that this works after we updated register @Saksham
 @app.route('/login', methods=['GET'])
 @auth.login_required
 def login():
@@ -369,7 +369,7 @@ def login():
     token = generate_auth_token(g.user_id)
     return jsonify({'token': str(token, encoding='utf-8')})
 
-# TODO: Return "Notes" from the user database with the provided user id.
+# TODO: Return "Notes" from the user database with the provided user id. @Saksham
 @app.route('/notes', methods=['GET'])
 def getNote(input_ID=None):
     """get note by id    
@@ -403,7 +403,7 @@ def getNote(input_ID=None):
     #         })
     # return "Not Found"
 
-# TODO: Update user's info accordingly with the provided parameters.
+# TODO: Update user's info accordingly with the provided parameters. @David
 @app.route('/user', methods=['POST'])
 @auth.login_required
 def updateUser():
@@ -438,7 +438,7 @@ def updateUser():
     return "TODO"
 
 # Use this to initialize DB
-# TODO: Change this to fit the user database structure.
+# TODO: Change this to fit the user database structure. @Sophia
 # def initUserDB():
 #     UserCon = sqlite3.connect(
 #                 "./data/user.db", check_same_thread=False)
