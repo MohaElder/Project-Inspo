@@ -1,6 +1,6 @@
 <template>
   <div class="timer">
-      <div class="less-blue semi-title">{{section}}</div>
+      <div class="less-blue semi-title" id="section-type">{{ section }}</div>
       <div class="blue title">{{ displayMinutes }}:{{ displaySeconds }}</div>
       <div class="controls">
         <img class="bg" :src="image"/>
@@ -142,5 +142,9 @@ export default {
 .controls {
   display: flex;
   flex-direction: column;
+}
+
+#section-type {
+  margin-bottom: 30px;
 }
 </style>

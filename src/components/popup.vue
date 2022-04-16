@@ -39,7 +39,8 @@ export default {
             "work": this.getWorkTime(),
             "break": this.getBreakTime()
           }
-          this.$emit('submitTime', time_info)
+          console.log(time_info)
+          this.$emit('submit-time', time_info)
           this.show = false
         },
         getWorkTime() {
