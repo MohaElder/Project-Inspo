@@ -4,7 +4,7 @@ export class User {
      *
      */
 
-    constructor(username = "default", breakTime = 1201, workTime = 1220, notes ={}) {
+    constructor(username = "default", breakTime = 0, workTime = 0, notes ={}) {
         this.username = username;
         this.breakTime = breakTime; //seconds
         this.workTime = workTime; //seconds

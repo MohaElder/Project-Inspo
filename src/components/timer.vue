@@ -4,12 +4,7 @@
       <div class="blue title">{{ displayMinutes }}:{{ displaySeconds }}</div>
       <div class="controls">
         <img class="bg" :src="image"/>
-        <img
-          class="play-btn"
-          :src="isPlaying ? pause : play"
-          key="pause"
-          @click="toggleTimer"
-        />
+        <img class="play-btn" :src="isPlaying ? pause : play" @click="toggleTimer"/>
         <!--the isPlaying ? pause : play means: if isPlaying is True? Then use pause src, else show play src -->
       </div>
     </div>
@@ -39,7 +34,6 @@ export default {
       play: play,
       pause: pause,
       image: studying,
-      rest: rest,
       section: "work",
     };
   },
@@ -67,30 +61,20 @@ export default {
       }
     },
 
-    reset(minutes){
-      console.log("resetting" + minutes);
-      this.toggleTimer()
-      this.totalSeconds=minutes*60
-    },
-
-    changeCurrentTimer(timerType) {
-      //can check out ternary expression~
-      this.reset(timerType == "break" ? this.breaktime : this.worktime);
-    },
-
     toggleSection(){
-      if(this.section==="work"){
-        this.section="break"
-        this.image=rest
-        this.changeCurrentTimer("break");
+
+      if(this.section === "work") {
+        this.section = "break"
+        this.image = rest
         console.log("work completed");
       }
-      else if(this.section==="break"){
-        this.section="work"
-        this.image=studying
-        this.changeCurrentTimer("work");
-        console.log("break completed");
+
+      else if(this.section==="break") {
+        this.section = "work"
+        this.image = studying
+        console.log("break is over");
       }
+
     },
 
     formatTime(time) {
@@ -112,6 +96,7 @@ export default {
             this.toggleSection();
             clearInterval(this.timerInstance);
             this.setUserTime();
+            this.isPlaying = false;
             return;
           }
           this.totalSeconds -= 1;
