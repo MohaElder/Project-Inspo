@@ -87,7 +87,6 @@ export default {
         window.addEventListener("keydown", this.keypress)
         await sleep(500)
         this.show = true;
-        console.log("show: " + this.show)
     },
     data() {
         return {
