@@ -1,17 +1,17 @@
 export class User {
     /**
      * User data structure
-     * 
+     *
      */
 
-    constructor(username = "default", breakTime = "1201", workTime = "1220", notes ={}) {
+    constructor(username = "default", breakTime = 1201, workTime = 1220, notes ={}) {
         this.username = username;
         this.breakTime = breakTime; //seconds
         this.workTime = workTime; //seconds
         this.notes = notes;
         console.log("created!")
     }
-    
+
     getUserName() {
         return this.username;
     }
@@ -22,7 +22,7 @@ export class User {
 
     getWorkTime() {
         return this.workTime;
-    }   
+    }
 
     getNotes() {
         return this.notes;
@@ -32,12 +32,9 @@ export class User {
         this.username = username;
     }
 
-    setBreakTime(breakTime) {
-        this.breakTime = breakTime;
-    }
-
-    setWorkTime(workTime) {
-        this.workTime = workTime;
+    setTime(time_info) {
+        this.workTime = Number(time_info.work.mins) * 60 + Number(time_info.work.secs);
+        this.breakTime = Number(time_info.break.mins) * 60 + Number(time_info.break.secs);
     }
 
     setNotes(notes) {

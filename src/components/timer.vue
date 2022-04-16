@@ -6,7 +6,7 @@
         <img class="bg" :src="image"/>
         <img
           class="play-btn"
-          :src="isPlaying ? pause : play" 
+          :src="isPlaying ? pause : play"
           key="pause"
           @click="toggleTimer"
         />
@@ -19,17 +19,18 @@
 import rest from "../assets/rest.png";
 import play from "../assets/play.png";
 import pause from "../assets/pause.png";
+import { User } from "../middleware/data.js";
 import studying from "../assets/studying.png";
 
 
 export default {
   name: "timer",
-  props: 
+
+  props:
   {
-    worktime: Number,
-    breaktime: Number,
- //we use props when we want to pass in parameters from the parent component, check out work.vue and you will know what I am talking about.
+    user: User
   },
+
   data() {
     return {
       timerInstance: null,
@@ -37,69 +38,85 @@ export default {
       isPlaying: false,
       play: play,
       pause: pause,
-      image:studying,
+      image: studying,
       rest: rest,
       section: "work",
     };
   },
 
-  computed: {
-    displayMinutes() {
-      const minutes = Math.floor(this.totalSeconds / 60);
-      return this.formatTime(minutes);
-    },
-    displaySeconds() {
-      const seconds = this.totalSeconds % 60;
-      return this.formatTime(seconds);
-    },
+  mounted() {
+    this.totalSeconds = this.user.workTime;
   },
 
-  mounted() {
-    this.totalSeconds = this.worktime*60;
+  computed: {
+    displayMinutes() {
+      return this.formatTime(Math.floor(this.totalSeconds / 60));
+    },
+    displaySeconds() {
+      return this.formatTime(this.totalSeconds % 60);
+    },
   },
 
   methods: {
+    setUserTime() {
+      if (this.section == "work") {
+        this.totalSeconds = this.user.workTime;
+      }
+      else if (this.section == "break") {
+        this.totalSeconds = this.user.breakTime;
+      }
+    },
+
     reset(minutes){
       console.log("resetting" + minutes);
       this.toggleTimer()
       this.totalSeconds=minutes*60
     },
+
     changeCurrentTimer(timerType) {
       //can check out ternary expression~
       this.reset(timerType == "break" ? this.breaktime : this.worktime);
     },
-    changeSection(){
+
+    toggleSection(){
       if(this.section==="work"){
         this.section="break"
         this.image=rest
         this.changeCurrentTimer("break");
         console.log("work completed");
-
-      }else if(this.section==="break"){
+      }
+      else if(this.section==="break"){
         this.section="work"
         this.image=studying
         this.changeCurrentTimer("work");
         console.log("break completed");
       }
     },
+
     formatTime(time) {
       if (time < 10) {
         return "0" + time;
       }
       return time.toString();
     },
+
     toggleTimer() { //I merged toggle, pause, and start to one function! It's just some simple changes based on your code~
+
       clearInterval(this.timerInstance);
       this.isPlaying = !this.isPlaying;
+
       if (this.isPlaying) {
+
         this.timerInstance = setInterval(() => {
           if (this.totalSeconds <= 0) {
-            this.changeSection();
+            this.toggleSection();
             clearInterval(this.timerInstance);
+            this.setUserTime();
             return;
           }
           this.totalSeconds -= 1;
         }, 1000);
+
       }
     },
   },
@@ -120,7 +137,7 @@ export default {
 .play-btn:hover {
   animation: bounce; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s; /*don't forget to set a duration! */
-}  
+}
 
 .timer {
   display: flex;

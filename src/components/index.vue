@@ -1,12 +1,8 @@
 <template>
   <div class="container">
     <span v-if="user != null">
-      <popup :user="user" />
-      <timer
-        :worktime="user.getWorkTime()"
-        :breaktime="user.getBreakTime()"
-        key=""
-      />
+      <popup :user="user" @submit-time="updateUserTime"/>
+      <timer :user="user" ref="timer"/>
       <div class="half">
         <div class="blue semi-title">sticky notes</div>
         <note />
@@ -38,7 +34,14 @@ export default {
     console.log("mounted");
     this.user = new User();
   },
-  methods: {},
+  methods: {
+    updateUserTime(time_info) {
+      this.user.setTime(time_info)
+      console.log(this.components)
+      this.$refs.timer.setUserTime();
+      console.log(this.user)
+    }
+  },
 };
 </script>
 
