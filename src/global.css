@@ -133,7 +133,7 @@
         display: flex;
         width: 100%;
     }
-    
+
     .half {
         flex-basis: 100px;
         flex-grow: 1;
@@ -147,6 +147,7 @@
     .semi-title {
         font-family:'Sofia Pro Black';
         font-size: 50px;
+        margin-bottom: 30px;
     }
 
     .blue {
@@ -161,4 +162,4 @@
         color: #FF8D5D;
     }
 
-    
+

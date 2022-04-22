@@ -1,52 +1,35 @@
 <template>
-  <div v-for="note in notes" :key="note.name" class="card container">
-    <div class="header">
-      <div class="title-space">
+  <div class="note">
+    <div class="blue semi-title">sticky notes</div>
+    <div v-for="note in notes" :key="note.name" class="card-container">
+      <img class="dismiss-x" src="../assets/icons/cross.png" @click="dismiss" />
+      <div class="header">
         <div class="card-title">{{ note.name }}</div>
         <div class="line"></div>
       </div>
-      <img class="dismiss-x" src="../assets/icons/cross.png" @click="dismiss" />
+      <ul class="card-body">
+        <li class="card-item" v-for="(str, index) in note.notes" :key="index">
+          {{ str }}
+        </li>
+      </ul>
     </div>
-    <ul class="card-body">
-      <li class="list-item" v-for="(str, index) in note.notes" :key="index">
-        {{ str }}
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
+import { User } from "../middleware/data.js";
+
 export default {
   name: "note",
+
+  props:
+  {
+    user: User
+  },
+
   data() {
     return {
-      msg: "hi",
-      notes: [
-        {
-          name: "english",
-          notes: [
-            "the mitochondria is the powerhouse of the cell",
-            "hank green whooo",
-            "more random notes",
-          ],
-        },
-        {
-          name: "math",
-          notes: [
-            "1 + 1 = 2",
-            "2 + 2 = 4",
-            "math is fun!",
-          ],
-        },  
-                {
-          name: "math",
-          notes: [
-            "1 + 1 = 2",
-            "2 + 2 = 4",
-            "math is fun!",
-          ],
-        },  
-      ],
+      notes: this.user.notes
     };
   },
   methods: {
@@ -61,27 +44,31 @@ export default {
 <style scoped>
 @import url("../global.css");
 
-.card {
+.note {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card-container {
+  position: relative;
   height: 404px;
   width: 404px;
   border: 4px solid var(--orange);
-  background-color: white;
   border-radius: 21px;
-  padding: 5%;
+  padding: 36px;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .header {
-  height: 20%;
+  height: 50px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-}
-
-.title-space {
-  width: 100%;
+  flex-direction: column;
 }
 
 .card-title {
@@ -92,25 +79,31 @@ export default {
 }
 
 .line {
-  margin-top: 5px;
   width: 100%;
   height: 3px;
   background: var(--orange);
+  margin-top: 5px;
   border-radius: 21px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.list-item {
+.card-item {
+  margin: 10px 0;
+  padding: 10px 0;
+  text-align: start;
   font-size: 30px;
   font-family: "Sofia Pro Medium";
   color: black;
-  text-align: start;
 }
 
 .dismiss-x {
-  position: relative;
-  bottom: 20px;
-  left: 10px;
-  height: 40%;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 40px;
+}
+
+.dismiss-x:hover {
+  cursor: pointer;
 }
 </style>

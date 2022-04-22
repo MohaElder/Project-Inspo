@@ -118,12 +118,10 @@ export default {
   text-decoration: none;
   overflow: hidden;
 }
-
 .play-btn:hover {
   animation: bounce; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s; /*don't forget to set a duration! */
 }
-
 .timer {
   display: flex;
   flex-direction: column;
@@ -142,9 +140,5 @@ export default {
 .controls {
   display: flex;
   flex-direction: column;
-}
-
-#section-type {
-  margin-bottom: 30px;
 }
 </style>

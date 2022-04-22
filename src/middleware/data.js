@@ -4,11 +4,29 @@ export class User {
      *
      */
 
-    constructor(username = "default", breakTime = 0, workTime = 0, notes ={}) {
+    constructor(username = "default", breakTime = 0, workTime = 0) {
         this.username = username;
         this.breakTime = breakTime; //seconds
         this.workTime = workTime; //seconds
-        this.notes = notes;
+
+        this.notes = [
+            {
+              name: "english",
+              notes: [
+                "the mitochondria is the powerhouse of the cell",
+                "hank green whooo",
+                "more random notes",
+              ],
+            },
+            {
+              name: "math",
+              notes: [
+                "1 + 1 = 2",
+                "2 + 2 = 4",
+                "math is fun!",
+              ],
+            },
+        ]
         console.log("created!")
     }
 
