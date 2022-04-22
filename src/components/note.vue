@@ -1,17 +1,19 @@
 <template>
   <div class="note">
     <div class="blue semi-title">sticky notes</div>
-    <div v-for="note in notes" :key="note.name" class="card-container">
-      <img class="dismiss-x" src="../assets/icons/cross.png" @click="dismiss" />
-      <div class="header">
-        <div class="card-title">{{ note.name }}</div>
-        <div class="line"></div>
+    <div class="cards-container">
+      <div v-for="note in notes" :key="note.name" class="card">
+        <img class="dismiss-x" src="../assets/icons/cross.png" @click="dismiss" />
+        <div class="card-header">
+          {{ note.name }}
+          <div class="card-header-line"></div>
+        </div>
+        <ul class="card-body">
+          <li class="card-item" v-for="(str, index) in note.notes" :key="index">
+            {{ str }}
+          </li>
+        </ul>
       </div>
-      <ul class="card-body">
-        <li class="card-item" v-for="(str, index) in note.notes" :key="index">
-          {{ str }}
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -50,7 +52,11 @@ export default {
   align-items: flex-start;
 }
 
-.card-container {
+.cards-container {
+
+}
+
+.card {
   position: relative;
   height: 404px;
   width: 404px;
@@ -64,21 +70,18 @@ export default {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.header {
+.card-header {
   height: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.card-title {
   text-align: start;
   font-family: "Sofia Pro Black";
   font-size: 30px;
   color: black;
 }
 
-.line {
+.card-header-line {
   width: 100%;
   height: 3px;
   background: var(--orange);
