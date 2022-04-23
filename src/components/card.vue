@@ -1,43 +1,50 @@
 <template>
-    <div class="card">
-        <img class="dismiss-x" src="../assets/icons/cross.png" @click="dismiss" />
-        <div class="card-header">
-            {{ card.name }}
-            <div class="card-header-line"></div>
-        </div>
-        <ul class="card-body">
-            <li class="card-item" v-for="(str, index) in card.notes" :key="index">
-            {{ str }}
-            </li>
-        </ul>
+  <div class="card">
+    <img class="dismiss-x" src="../assets/icons/cross.png" @click="dismiss" />
+    <div class="card-header">
+      {{ getName }}
+      <div class="card-header-line"></div>
     </div>
+    <ul class="card-body">
+      <li class="card-item" v-for="(str, index) in getNotes" :key="index">
+        {{ str }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
   name: "card",
 
-  props:
-  {
-    note: Object
+  props: {
+    note: Object,
   },
 
   data() {
     return {
-      card: this.note,
     };
+  },
+
+  computed: {
+    getName() {
+      return this.note.name;
+    },
+    getNotes() {
+      return this.note.notes;
+    }
   },
 
   methods: {
     dismiss() {
       console.log("dismissed!");
+      console.log(this.note);
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 @import url("../global.css");
 
 .card {
