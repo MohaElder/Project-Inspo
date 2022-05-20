@@ -1,17 +1,19 @@
 <template>
   <!-- <index />  -->
-  <work />
+  <!-- <work /> -->
+  <todo />
 </template>
 
 <script>
 //import index from './components/index.vue'
-import work from './components/work.vue'
-
+// import work from './components/work.vue'
+import todo from './components/todo.vue'
 export default {
   name: 'App',
   components: {
     //index,
-    work
+    // work,
+    todo
   }
 }
 </script>
